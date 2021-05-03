@@ -41,7 +41,11 @@ yolo_output_layer = [yolo_layers[yolo_layer[0] - 1] for yolo_layer in yolo_model
 # input preprocessed blob into model and pass through the model
 yolo_model.setInput(img_blob)
 # obtain the detection layers by forwarding through till the output layer
+start = time.time()
 obj_detection_layers = yolo_model.forward(yolo_output_layer)
+end = time.time()
+# show timing information on YOLO
+print("Predecton en {:.6f} seconds".format(end - start))
 
 
 # initialization for non-max suppression (NMS)
